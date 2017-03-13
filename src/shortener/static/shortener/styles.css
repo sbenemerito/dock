@@ -1,0 +1,33 @@
+@font-face {
+    font-family: UniSansThick;
+    src: url(Uni_Sans_Heavy.otf);
+}
+
+@font-face {
+    font-family: UniSansThin;
+    src: url(Uni_Sans_Thin.otf);
+}
+
+.thickfont {
+	font-family: UniSansThick;
+}
+
+.thinfont {
+	font-family: UniSansThin;
+}
+
+.parallax-container {
+ 	height: 700px;
+}
+
+.bigtext {
+ 	font-size: 8em;
+}
+
+.medtext {
+ 	font-size: 1.2em;
+}
+
+.shadowed {
+	text-shadow: black 0.1em 0.1em 0.2em;
+}

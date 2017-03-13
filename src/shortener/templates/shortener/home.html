@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dock</title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<link rel="stylesheet" href="{% static "shortener/styles.css" %}">
+	<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+	<header>
+	  <nav class="black">
+	    <div class="container grey darken-4">
+	      <div class="nav-wrapper">
+	        <a href="dock.html" class="brand-logo thickfont">Dock</a>
+	        <ul class="right hide-on-med-and-down">
+	          <li><a href="#about" class="thinfont medtext">About</a></li>
+	          <li><a href="#contact" class="thinfont medtext">Contact</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	</header>
+
+	<main>
+	    <div class="parallax-container">
+	    	<div class="parallax white-text">
+	    		<img src="{% static "shortener/header.jpg" %}" style="z-index: -999;">
+	    		<br/><br/><br/><br/>
+	    		<h1 class="center-align thickfont white-text bigtext shadowed">Dock</h1>
+	    		<h5 class="center-align thinfont white-text shadowed">Yet another URL shortener</h5>
+	    		<br/><br/><br/>
+	    		<h5 class="center-align thinfont white-text shadowed">* form goes here *</h5>
+	    	</div>
+	 	</div>
+
+	    <div class="section white" id="about">
+	    <div class="row container">
+	      <h2 class="header thickfont">About</h2>
+	      <p class="grey-text text-darken-3 lighten-3 thinfont medfont"><b><i>Dock</i></b> is basically yet another URL shortener, similar to <a href="https://bitly.com/">Bitly</a>. It offers similar additional functionality such as 'link statistics' and 'link tracking'. A school project, made with the use of <a href="https://www.djangoproject.com/">Django</a> and <a href="http://materializecss.com/">MaterializeCSS</a>. <br/><br/> <b><i>dock</i></b> &emsp;|&emsp;/däk/&emsp;|&emsp;verb&emsp;|<br/> - to cut short <br/> - to take away a part of</p>
+	      </div>
+	    </div>
+
+	    <div class="parallax-container">
+	    	<div class="parallax white-text">
+	    		<img src="{% static "shortener/header2.jpg" %}" style="z-index: -999;"">
+	    		<br/><br/><br/><br/><br/>
+	    		<h5 class="center-align thinfont white-text shadowed">* number of shortened links go here *</h5>
+	    		<br/><br/>
+	    		<h5 class="center-align thinfont white-text shadowed">* use another image *</h5>
+	    	</div>
+	 	</div>
+    </main>
+
+    <footer class="page-footer grey darken-4">
+      <div class="container">
+        <div class="row">
+          <div class="col s12" style="overflow: hidden;">
+            <h5 class="white-text thickfont">Contact</h5> <br/>
+            <a href="https://twitter.com/intent/tweet?screen_name=sbenemerito" class="twitter-mention-button" data-show-count="false" data-size="large">Tweet to @sbenemerito</a>
+            <br/>
+			<a class="github-button" href="https://github.com/sbenemerito" data-style="mega" data-count-href="/sbenemerito/followers" data-count-api="/users/sbenemerito#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @nsbenemerito on GitHub">Follow @sbenemerito</a>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright black thinfont">
+        <div class="container">
+        © 2017
+        </div>
+      </div>
+    </footer>
+
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script>
+    	$(document).ready(function(){
+      		$('.parallax').parallax();
+      		$(".button-collapse").sideNav();
+    	});
+    </script>    
+</body>
+</html>
