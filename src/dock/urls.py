@@ -18,7 +18,7 @@ from django.contrib import admin
 from shortener.views import index, redirect_to_link
 
 urlpatterns = [
-    url(r'^$', index),
+    url(r'^$', index, name='home'),
     url(r'^admin/', admin.site.urls),
-    url(r'^(?P<shortcode>[a-z0-9]{6,15})/$', redirect_to_link),
+    url(r'^(?P<shortcode>[a-z0-9]{6,15})/$', redirect_to_link, name='scode'),
 ]
