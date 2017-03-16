@@ -22,10 +22,10 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 	<header>
-	  <nav class="black">
+	  <nav class="black pinned" style="z-index:1000;">
 	    <div class="container grey darken-4">
 	      <div class="nav-wrapper">
-	        <a href="dock.html" class="brand-logo thickfont">Dock</a>
+	        <a href="#start" class="brand-logo thickfont">Dock</a>
 	        <ul class="right hide-on-med-and-down">
 	          <li><a href="#about" class="thinfont medtext">About</a></li>
 	          <li><a href="#contact" class="thinfont medtext">Contact</a></li>
@@ -36,7 +36,7 @@
 	</header>
 
 	<main>
-	    <div class="parallax-container">
+	    <div class="parallax-container" id="start">
 	    	<div class="parallax white-text">
 	    		<img src="{% static "shortener/header3.jpg" %}" style="z-index: -999;">
 	    		<br/><br/><br/><br/>
