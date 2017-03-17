@@ -1,14 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.db.models import Sum
 
 from .models import ShortenedURL
+from analytics.models import LinkClick
 from .forms import URLForm
 from .utils import create_shortcode
 
 
 def index(request):
 	template = 'shortener/home.html'
-	context = {}
+	context = {'links': ShortenedURL.objects.all().count(), 'form': URLForm()}
+	context.update(LinkClick.objects.aggregate(Sum('count')))
 
 	if request.method == 'POST':
 		form = URLForm(data=request.POST)
@@ -16,22 +19,15 @@ def index(request):
 			new_url = form.save(commit=False)
 			obj, created = ShortenedURL.objects.get_or_create(url=new_url.url)
 
-			if created:
-				print("Created!")
-			else:
-				print("Exists!")
-
-			template = 'shortener/home2.html'
-			context = {'form': form, 'url': new_url.url, 'link': obj.get_short_url }
-	else:
-		form = URLForm()
-		context = {'form': form}
+			template = 'shortener/result.html'
+			context.update({'form': form, 'object': obj})
 	
 	return render(request, template, context)
 
 
 def redirect_to_link(request, shortcode):
-	qs = get_object_or_404(ShortenedURL, shortcode=shortcode)
-	return HttpResponseRedirect(qs.url)
+	obj = get_object_or_404(ShortenedURL, shortcode=shortcode)
+	LinkClick.objects.create_linkclick(obj)
+	return HttpResponseRedirect(obj.url)
 
 	

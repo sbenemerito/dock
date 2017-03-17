@@ -1,0 +1,21 @@
+{% extends 'shortener/base.html' %}
+
+{% block headercard %}
+	<div class="row" style="position:relative;top:-48rem;">
+    	    <div class="col l3"></div>
+    	    <div class="col s12 l6">
+                      <div class="card white hoverable" style="height:190px;">
+                            <div class="card-content">
+                                <span class="card-title thickfont"><i class="material-icons small left">done_all</i>Result</span>
+                            <p class="thinfont medtext"><i class="material-icons small left">code</i>New URL: <a href="{{ object.get_short_url }}" id="shortenedURL">dockr.herokuapp.com{{ object.get_short_url }}</a></p>
+                            <br />
+                            <p class="thinfont medtext"><i class="material-icons small left">assessment</i>Times clicked: {% if object.linkclick.count %}{{object.linkclick.count }}{% else %}0{% endif %}</a></p>
+	            	</div>
+	            	<div class="card-action" style="text-decoration: none;">
+	                  <a href="#" class="black-text cpyUrl" data-clipboard-target="#shortenedURL" onclick="Materialize.toast('Copied to clipboard!', 4000)">Copy URL</a>
+	                  <a href="{% url 'home' %}" class="black-text">New link</a>
+	             </div>
+	        </div>
+    	    </div>
+    	</div>    
+{% endblock %}

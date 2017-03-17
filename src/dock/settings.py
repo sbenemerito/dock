@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # My apps
     'shortener',
+    'analytics',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'dock.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'shortener/templates/shortener')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

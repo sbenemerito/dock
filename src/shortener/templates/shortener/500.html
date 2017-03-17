@@ -1,0 +1,21 @@
+{% extends 'shortener/base.html' %}
+
+{% block forerror %}
+    <div class="row" style="position:relative;top:0rem;">
+            <div class="col l3"></div>
+            <div class="col s12 l6">
+                      <div class="card white hoverable" style="height:175px;">
+                            <div class="card-content black-text">
+                                <span class="card-title thickfont"><i class="material-icons small left">error</i>Oops, something broke...</span>
+                                 <p class="thinfont medtext">There has been an Internal Server Error (Error: 500).</p>
+                    </div>
+            </div>
+            </div>
+        </div>    
+{% endblock %}
+
+{% block otherpanels %}
+{% endblock %}
+
+{% block otherpanels2 %}
+{% endblock %}
