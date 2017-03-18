@@ -1,12 +1,9 @@
 env/
 __pycache__/
 *.sqlite3
-.Python
 bin/
 include/
 lib/
 pip-selfcheck.json
-*.py[cod]
-*.DS_Store
 scripts/
 tcl/
