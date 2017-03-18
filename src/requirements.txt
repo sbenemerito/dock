@@ -1,3 +1,4 @@
+python==3.5.1
 appdirs==1.4.3
 Django==1.10.2
 gunicorn==19.7.0
