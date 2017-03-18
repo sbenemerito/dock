@@ -3,26 +3,27 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Dock</title>
+	<title>Dock | URL Shortenening Service</title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 	<link rel="stylesheet" href="{% static "shortener/styles.css" %}">
 	<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+	<link rel='shortcut icon' href="{% static "shortener/favicon.ico" %}" type="image/x-icon">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
 	<header>
-	  <nav class="black" style="z-index:1000;">
+	  <nav class="black pinned" style="z-index:1000;">
 	    <div class="container grey darken-4">
 	      <div class="nav-wrapper">
 	        <a href="{% url 'home' %}" class="brand-logo thickfont">Dock</a>
 	        <ul class="right hide-on-med-and-down">
-	          <li><a href="#about" class="thinfont medtext">About</a></li>
-	          <li><a href="#stats" class="thinfont medtext">Stats</a></li>
-	          <li><a href="#connect" class="thinfont medtext">Connect</a></li>
+	          <li><a href="#about" class="thinfont smtext">About</a></li>
+	          <li><a href="#stats" class="thinfont smtext">Stats</a></li>
+	          <li><a href="#connect" class="thinfont smtext">Connect</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -30,9 +31,10 @@
 	</header>
 
 	<main>	    
-	    <div class="parallax-container">
+	    <div class="parallax-container" id="start">
 	    	<div class="parallax white-text">
 	    		<img src="{% static "shortener/topimg.jpg" %}" style="z-index: -999;">
+	    		<img src="{% static "shortener/dock-logo.png" %}" style="z-index: -900;height:50%;width:50%;">
 	    		<br/><br/><br/><br/>
 	    		<h1 class="center-align thickfont white-text bigtext shadowed">Dock</h1>
 	    		<h5 class="center-align thinfont white-text shadowed">Yet another URL shortener</h5>
@@ -45,9 +47,10 @@
 	    {% block otherpanels %}
 	    <div class="section white" id="about">
 	    <div class="row container" style="height: 20rem;">
-	      <h2 class="header thickfont">About</h2>
-	      <p class="black-text thinfont medfont" style="max-width: 1000px; word-wrap: break-word;">
-	      	 <i>dock</i> &emsp;|&emsp;/däk/&emsp;|&emsp;verb&emsp;|<br/> - to cut short <br/> - to take away a part of</b>
+	      <ul id="about-items">
+	      <li style="opacity:0;"><h2 class="header thickfont">About</h2></li>
+	      <li style="opacity:0;"><p class="black-text thinfont medfont" style="max-width: 1000px; word-wrap: break-word;">
+	      	 <i>dock</i> &emsp;|&emsp;/däk/&emsp;|&emsp;verb&emsp;|<br/> - to cut short <br/> - to take away a part of
 	      	 <br />
 	      	 <small>(From <a href="https://www.merriam-webster.com/dictionary/dock">Merriam-Webster's 3rd definition</a>)</small>
 		<br /><br />
@@ -63,8 +66,9 @@
 		<br /><br />
 	      	This way, links are more manageable, easier to share, and kept secret. 
 	      	<br />
-	      	Dock is a school project, made with the use of <a href="https://www.djangoproject.com/">Django</a> and <a href="http://materializecss.com/">MaterializeCSS</a>. 
-	      </p>
+	      	Dock is a school project, made with the use of <a href="https://www.djangoproject.com/">Django</a> and <a href="http://materializecss.com/">MaterializeCSS</a>.</b> 
+	      </p></li>
+	      </ul>
 	      </div>
 	    </div>
 	
@@ -75,11 +79,17 @@
 	 
 	    <div class="parallax-container" id="stats">
 	    	<div class="parallax white-text">
-	    		<img src="{% static "shortener/lowimg.jpg" %}" style="z-index: -999;"">
+	    		<img src="{% static "shortener/lowimg.jpg" %}" style="z-index: -999;">
 	    		<br/><br/><br/><br/><br/>
-	    		<h5 class="center-align thinfont white-text shadowed"><span class="Count">{{ links }}</span> shortened links</h5>
+	    		<ul id="stats-items">	    		
+	    		<li style="opacity:0;"><h5 class="center-align thickfont white-text shadowed" style="font-size: 4.2em;">We have served:</h5></li>
 	    		<br/><br/>
-	    		<h5 class="center-align thinfont white-text shadowed"><span class="Count">{{ count__sum }}</span> redirects</h5>
+	    		<h5 class="center-align thinfont white-text shadowed medtext" style="font-size: 3.5em;"><span class="Count">{{ links }}</span> shortened links</h5></li>
+	    		<br/><br/>
+	    		<li style="opacity:0;"><h5 class="center-align thinfont white-text shadowed" style="font-size: 3.5em;"><span class="Count">{{ count__sum }}</span> redirects</h5></li>
+	    		<br/><br/>
+	    		<li style="opacity:0;"><h5 class="center-align thinfont white-text shadowed smtext">... and growing :)</h5></li>
+	    		</ul>
 	    	</div>
 	    </div>
 	    {% endblock %}
@@ -103,13 +113,14 @@
           <div class="col s12 l4" style="overflow: hidden;">
             <h5 class="white-text thickfont">Available on GitHub</h5> <br/>
             <a class="github-button" href="https://github.com/sbenemerito" data-style="mega" data-count-href="/sbenemerito/followers" data-count-api="/users/sbenemerito#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @nsbenemerito on GitHub">Follow @sbenemerito</a><br />
-            <a class="github-button" href="https://github.com/sbenemerito/django-forum/fork" data-style="mega" data-count-href="/sbenemerito/django-forum/network" data-count-api="/repos/sbenemerito/django-forum#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork sbenemerito/django-forum on GitHub">Fork</a><br />
+            <a class="github-button" href="https://github.com/sbenemerito/dock/fork" data-style="mega" data-count-href="/sbenemerito/dock/network" data-count-api="/repos/sbenemerito/dock#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork sbenemerito/dock on GitHub">Fork</a><br />
           </div>
         </div>
       </div>
       <div class="footer-copyright black thinfont">
         <div class="container">
         Benemerito © 2017
+        <a class="white-text right" href="#start" style="text-decoration: none;"><i class="material-icons tiny left">arrow_upward</i> Back to top</a>
         </div>
       </div>
     </footer>
@@ -117,24 +128,6 @@
 	
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script>
-    	$(document).ready(function(){
-      		$('.parallax').parallax();
-      		$(".button-collapse").sideNav();
-    	});
-
-    	new Clipboard('.cpyUrl');
-
-    	$('.Count').each(function () {
-		var $this = $(this);
-		jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
-		    duration: 1000,
-		    easing: 'swing',
-		    step: function () {
-		        $this.text(Math.ceil(this.Counter));
-		    }
-		});
-	});
-    </script>    
+     <script src="{% static "shortener/scripts.js" %}"></script>    
 </body>
 </html>
